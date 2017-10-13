@@ -11,3 +11,15 @@ This project uses the JavaScript framework Jasmine to test the app feedreader
 * Clone this repository to your desktop.
 * Open index.html in desired browser.
 * Inspect tests at the bottom of the screen that indicate success or failure.
+
+## Resources
+
+#### How to test changes on click
+
+https://stackoverflow.com/questions/16840622/jasmine-checking-addclass-on-click
+
+https://stackoverflow.com/questions/41514126/how-to-write-jasmine-test-case-for-checking-toggle-class-functionality-inside-cl
+
+#### How to check and compare html of classes
+
+https://stackoverflow.com/questions/1309452/how-to-replace-innerhtml-of-a-div-using-jquery
