@@ -6,7 +6,7 @@ This project uses the JavaScript framework Jasmine to test the app feedreader
 
 <a href="https://jasmine.github.io/2.1/introduction.html">Jasmine Documentation</a>
 
-## How to run the test locally
+## How to run the test locally on computer
 
 * Clone this repository to your desktop.
 * Open index.html in desired browser.

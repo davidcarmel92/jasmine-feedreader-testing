@@ -49,7 +49,7 @@ $(function() {
         on startup.
         */
         it('menu hidden on startup', function(){
-          expect($('body').attr('class')).toContain('menu-hidden');
+          expect($('body').attr('class')).toEqual('menu-hidden');
         });
 
         /*
@@ -57,11 +57,10 @@ $(function() {
         toggled on and off when the menuIcon is clicked.
         */
         it('menu changes visibility on click', function(){
-          var menuIcon = $('.menu-icon-link');
-          menuIcon.click();
-          expect($('body').attr('class')).not.toContain('menu-hidden');
-          menuIcon.click();
-          expect($('body').attr('class')).toContain('menu-hidden');
+          $('.menu-icon-link').click();
+          expect($('body').attr('class')).not.toEqual('menu-hidden');
+          $('.menu-icon-link').click();
+          expect($('body').attr('class')).toEqual('menu-hidden');
         });
     });
 
@@ -78,7 +77,7 @@ $(function() {
         */
 
         it('there is entry within feed container', function(done){
-          expect($('.feed').find('.entry').length).toBeGreaterThan(0);
+          expect($('.feed').find('.entry').length).not.toEqual(0);
           done();
         });
 
@@ -106,7 +105,7 @@ $(function() {
       loadFeed changes
       */
       it("ensures there is a new feed when loadFeed changes", function(done){
-        expect(currentLoadFeed).not.toBe(newLoadFeed);
+        expect(currentLoadFeed).not.toEqual(newLoadFeed);
         done();
       });
     });
