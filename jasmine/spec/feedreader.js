@@ -24,6 +24,7 @@ $(function() {
 
         it('length not 0', function() {
             expect(allFeeds.length).not.toBe(0);
+            expect(allFeeds).toBeDefined();
         });
 
         /*
@@ -32,6 +33,7 @@ $(function() {
         */
         it('all urls defined', function() {
           allFeeds.forEach(function(item){
+            expect(item.url.length).not.toBe(0);
             expect(item.url).toBeDefined();
           });
         });
@@ -41,6 +43,7 @@ $(function() {
         */
         it('all names defined', function() {
           allFeeds.forEach(function(item){
+            expect(item.name.length).not.toBe(0);
             expect(item.name).toBeDefined();
           });
         });
@@ -54,7 +57,7 @@ $(function() {
         on startup.
         */
         it('menu hidden on startup', function(){
-          expect($('body').attr('class')).toEqual('menu-hidden');
+          expect($('body').attr('class')).toContain('menu-hidden');
         });
 
         /*
@@ -64,9 +67,9 @@ $(function() {
         it('menu changes visibility on click', function(){
           var menuIcon = $('.menu-icon-link');
           menuIcon.click();
-          expect($('body').attr('class')).not.toEqual('menu-hidden');
+          expect($('body').attr('class')).not.toContain('menu-hidden');
           menuIcon.click();
-          expect($('body').attr('class')).toEqual('menu-hidden');
+          expect($('body').attr('class')).toContain('menu-hidden');
         });
     });
 
@@ -91,8 +94,17 @@ $(function() {
     });
 
     describe('New Feed Selection', function(){
-    /* TODO: Write a new test suite named "New Feed Selection" */
+      beforeEach(function(done){
+        loadFeed(0,function(){
+          done();
+        });
+      });
 
+
+      it('load feed changes', function(done){
+        expect(Contain)
+        done();
+      })
         /* TODO: Write a test that ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
