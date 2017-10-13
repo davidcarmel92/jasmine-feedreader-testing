@@ -49,18 +49,18 @@ $(function() {
         on startup.
         */
         it('menu hidden on startup', function(){
-          expect($('body').attr('class')).toEqual('menu-hidden');
+          expect($('body').hasClass('menu-hidden')).toBe(true);
         });
 
         /*
-        Test expects that the startup visibility is
+        Test expects that the startup visibility istrue
         toggled on and off when the menuIcon is clicked.
         */
         it('menu changes visibility on click', function(){
           $('.menu-icon-link').click();
-          expect($('body').attr('class')).not.toEqual('menu-hidden');
+          expect($('body').hasClass('menu-hidden')).not.toBe(true);
           $('.menu-icon-link').click();
-          expect($('body').attr('class')).toEqual('menu-hidden');
+          expect($('body').hasClass('menu-hidden')).toBe(true);
         });
     });
 
