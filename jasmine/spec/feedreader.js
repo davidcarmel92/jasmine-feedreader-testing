@@ -1,25 +1,17 @@
 /* feedreader.js
  *
  * This is the spec file that Jasmine will read and contains
- * all of the tests that will be run against your application.
+ * all of the tests that will be run against the application.
  */
 
-/* We're placing all of our tests within the $() function,
- * since some of these tests may require DOM elements. We want
- * to ensure they don't run until the DOM is ready.
+/* All of the tests are within the $() function,
+ * since some of these tests may require DOM elements.
  */
 $(function() {
-    /* This is our first test suite - a test suite just contains
-    * a related set of tests. This suite is all about the RSS
-    * feeds definitions, the allFeeds variable in our application.
-    */
     describe('RSS Feeds', function() {
-        /* This is our first test - it tests to make sure that the
+        /* Tests to make sure that the
          * allFeeds variable has been defined and that it is not
-         * empty. Experiment with this before you get started on
-         * the rest of this project. What happens when you change
-         * allFeeds in app.js to be an empty array and refresh the
-         * page?
+         * empty.
          */
 
         it('length not 0', function() {
@@ -29,7 +21,7 @@ $(function() {
 
         /*
         Test expects that each item in the allFeeds object
-        has a defined url.
+        has a defined url and is not empty.
         */
         it('all urls defined', function() {
           allFeeds.forEach(function(item){
@@ -39,7 +31,7 @@ $(function() {
         });
         /*
         Test expects that each item in the allFeeds object
-        has a defined name.
+        has a defined name and is not empty.
         */
         it('all names defined', function() {
           allFeeds.forEach(function(item){
@@ -80,34 +72,42 @@ $(function() {
           });
         });
 
+        /*
+        Tests that there is atleast one entry in the .feed
+        container
+        */
+
         it('there is entry within feed container', function(done){
-          expect($('.feed').length).not.toEqual(0);
+          expect($('.feed').find('.entry').length).toBeGreaterThan(0);
           done();
         });
-        /* TODO: Write a test that ensures when the loadFeed
-         * function is called and completes its work, there is at least
-         * a single .entry element within the .feed container.
-         * Remember, loadFeed() is asynchronous so this test will require
-         * the use of Jasmine's beforeEach and asynchronous done() function.
-         */
 
     });
 
     describe('New Feed Selection', function(){
+      var currentLoadFeed;
+      var newLoadFeed;
+      /*
+      Before each save the .feed html when loadFeed is 0,
+      and when loadFeed is 1.
+      */
       beforeEach(function(done){
         loadFeed(0,function(){
-          done();
+          currentLoadFeed = $('.feed').html();
+          loadFeed(1,function(){
+            newLoadFeed = $('.feed').html();
+            done();
+          });
         });
       });
 
-
-      it('load feed changes', function(done){
-        expect(Contain)
+      /*
+      Test to make sure that the feeds are not the same when
+      loadFeed changes
+      */
+      it("ensures there is a new feed when loadFeed changes", function(done){
+        expect(currentLoadFeed).not.toBe(newLoadFeed);
         done();
-      })
-        /* TODO: Write a test that ensures when a new feed is loaded
-         * by the loadFeed function that the content actually changes.
-         * Remember, loadFeed() is asynchronous.
-         */
+      });
     });
 }());
