@@ -76,9 +76,8 @@ $(function() {
         container
         */
 
-        it('there is entry within feed container', function(done){
+        it('there is entry within feed container', function(){
           expect($('.feed').find('.entry').length).not.toEqual(0);
-          done();
         });
 
     });
